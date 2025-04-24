@@ -33,4 +33,8 @@ variable "network" {
   description = "Network to attach"
 }
 
-
+variable "tags" {
+  type        = list(string)
+  description = "List of tags for the VM"
+  default     = []
+}
