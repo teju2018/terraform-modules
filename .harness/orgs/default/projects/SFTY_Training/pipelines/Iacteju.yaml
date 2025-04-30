@@ -40,5 +40,5 @@ pipeline:
                   identifier: apply
                   timeout: 10m
                   spec:
-                    command: apply
+                    command: migrate-state
         tags: {}
