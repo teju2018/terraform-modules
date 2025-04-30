@@ -38,7 +38,7 @@ pipeline:
                   type: IACMTerraformPlugin
                   name: apply
                   identifier: apply
-                  timeout: 10m
+                  timeout: 1h
                   spec:
-                    command: migrate-state
+                    command: destroy
         tags: {}
