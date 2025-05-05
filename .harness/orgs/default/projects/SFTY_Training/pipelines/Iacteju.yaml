@@ -62,3 +62,8 @@ pipeline:
       description: ""
       required: false
       value: <+input>.default(apply).allowedValues(apply,destroy)
+    - name: paul
+      type: String
+      description: ""
+      required: false
+      value: <+input>.default(apply).allowedValues(apply,destory)
