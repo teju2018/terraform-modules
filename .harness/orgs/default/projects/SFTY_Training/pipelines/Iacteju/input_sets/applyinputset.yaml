@@ -1,0 +1,11 @@
+inputSet:
+  pipeline:
+    identifier: Iacteju
+    variables:
+      - name: im
+        type: String
+        value: apply
+  name: apply-inputset
+  identifier: applyinputset
+  orgIdentifier: default
+  projectIdentifier: SFTY_Training
