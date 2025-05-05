@@ -34,11 +34,31 @@ pipeline:
                   timeout: 10m
                   spec:
                     command: plan
-              - step:
-                  type: IACMTerraformPlugin
-                  name: apply
-                  identifier: apply
-                  timeout: 1h
-                  spec:
-                    command: destroy
+              - parallel:
+                  - step:
+                      type: IACMTerraformPlugin
+                      name: apply
+                      identifier: apply
+                      timeout: 1h
+                      spec:
+                        command: apply
+                      when:
+                        stageStatus: Success
+                        condition: <+pipeline.variables.im>=="apply"
+                  - step:
+                      type: IACMTerraformPlugin
+                      name: IACMTerraformPlugin_4
+                      identifier: IACMTerraformPlugin_4
+                      spec:
+                        command: destroy
+                      timeout: 1h
+                      when:
+                        stageStatus: Success
+                        condition: <+pipeline.variables.im>=="destroy"
         tags: {}
+  variables:
+    - name: im
+      type: String
+      description: ""
+      required: false
+      value: <+input>.default(apply).allowedValues(apply,destroy)
